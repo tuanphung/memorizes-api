@@ -13,6 +13,8 @@ class MemorizeController: Controller {
 		secondMemorize.title = "First Memorize"
 		secondMemorize.description = "First Memorize description"
 
-		return ["data": [firstMemorize.toJSON(), secondMemorize.toJSON()]]
+		let data = [firstMemorize.toJSON(), secondMemorize.toJSON()]
+		print(JSONSerializer.serialize(data))
+		return data
 	}
 }
