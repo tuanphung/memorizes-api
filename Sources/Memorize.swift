@@ -3,7 +3,7 @@ class Memorize {
 	var title: String = ""
 	var description: String = ""
 
-	func toJSON() -> [String: AnyObject] {
+	func toJSON() -> [String: Any] {
 		return ["id": id,
 				"title": title,
 				"description": description]

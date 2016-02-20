@@ -8,7 +8,7 @@ Route.get("/") { request in
 	}
 }
 
-Route.get("memorizes", closure: MemorizeController().getMemorizeList())
+Route.get("memorizes", closure: MemorizeController().getMemorizeList)
 
 //print what link to visit for default port
 print("Visit http://localhost:8080")
