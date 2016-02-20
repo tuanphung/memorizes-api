@@ -1,3 +1,4 @@
+import Foundation
 import Vapor
 
 class MemorizeController: Controller {
@@ -13,8 +14,18 @@ class MemorizeController: Controller {
 		secondMemorize.title = "First Memorize"
 		secondMemorize.description = "First Memorize description"
 
-		let data = [firstMemorize.toJSON(), secondMemorize.toJSON()]
-		print(JSONSerializer.serialize(data))
-		return data
+		let results = [firstMemorize.toJSON(), secondMemorize.toJSON()]
+
+		if let jsonObject = results as? AnyObject {
+            guard NSJSONSerialization.isValidJSONObject(jsonObject) else {
+                throw SerializationError.InvalidObject
+            }
+
+            let json = try NSJSONSerialization.dataWithJSONObject(jsonObject, options: NSJSONWritingOptions.PrettyPrinted)
+            // data = Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(json.bytes), count: json.length))
+            print(json)
+        }
+
+		return results
 	}
 }
