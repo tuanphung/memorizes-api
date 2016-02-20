@@ -13,6 +13,6 @@ class MemorizeController: Controller {
 		secondMemorize.title = "First Memorize"
 		secondMemorize.description = "First Memorize description"
 
-		return firstMemorize.toJSON()
+		return ["data": [firstMemorize.toJSON(), secondMemorize.toJSON()]]
 	}
 }
